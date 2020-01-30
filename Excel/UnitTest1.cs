@@ -16,7 +16,7 @@ namespace Excel
             IWebDriver driver = new ChromeDriver();
 
 
-            var reporter = new ExtentHtmlReporter("C:\\Users\\shaik\\source\\git\\Excel\\Excel\\Reports\\sreports.html");
+            var reporter = new ExtentHtmlReporter(@".\Report\reports.html");
 
             var extent = new ExtentReports();
 
@@ -32,10 +32,15 @@ namespace Excel
 
             var test = extent.CreateTest("excel");
 
-            string url=  FunctionLibrary.ReadDataExcel(1, 1, 1);
+
+            driver.Navigate().GoToUrl("https://cricket.yahoo.net/");
+
+            driver.Manage().Window.Maximize();
 
 
-            driver.Url = url;
+          Screenshot ss=  ((ITakesScreenshot)driver).GetScreenshot();
+
+            ss.SaveAsFile(@".\Screenshots\image.png");
 
             test.Log(Status.Pass, "Test case pass");
 
