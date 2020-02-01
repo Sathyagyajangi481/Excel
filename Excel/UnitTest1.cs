@@ -33,7 +33,7 @@ namespace Excel
             var test = extent.CreateTest("excel");
 
 
-            driver.Navigate().GoToUrl("https://cricket.yahoo.net/");
+            driver.Navigate().GoToUrl("https://google.co.in/");
 
             driver.Manage().Window.Maximize();
 
@@ -45,6 +45,9 @@ namespace Excel
             test.Log(Status.Pass, "Test case pass");
 
             extent.Flush();
+
+
+            driver.Close();
         }
     }
 }
